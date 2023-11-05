@@ -4,7 +4,6 @@ from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, le
 from .models import User
 
 
-
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -45,3 +44,9 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+
+# empty form for following and unfollowing
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
+

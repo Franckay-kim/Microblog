@@ -55,7 +55,7 @@ class User(UserMixin, db.Model):
 
     def is_following(self, user):
         return self.followed.filter(
-            followers.c.followed_id == user_id).count() > 0
+            followers.c.followed_id == user.id).count() > 0
 
 # Followed posts query, together with the user's own posts
     def followed_posts(self):
