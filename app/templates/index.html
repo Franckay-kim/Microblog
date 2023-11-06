@@ -3,6 +3,8 @@
 {% block content %}
     <h1>Hi, {{ current_user.username }}!</h1>
 <!--post submission form in the main page -->
+<!--make the blog post submission form optional-->
+{% if form %}
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
@@ -14,9 +16,8 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+{% endif %}
     {% for post in posts %}
-    <p>
-        {{ post.author.username }} says: <b>{{ post.body }}</b>
-    </p>
+    {% include '_post.html' %}
     {% endfor %}
 {% endblock %}
