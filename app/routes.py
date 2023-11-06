@@ -2,14 +2,14 @@ from app import app
 from flask import render_template, flash, redirect, url_for
 from .forms import LoginForm
 from flask_login import current_user, login_user
-from .models import User
+from .models import User, Post
 from flask_login import logout_user, login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
 from .forms import RegistrationForm
 from datetime import datetime
-from .forms import EditProfileForm, EmptyForm
+from .forms import EditProfileForm, EmptyForm, PostForm
 
 
 @app.before_request
@@ -19,11 +19,17 @@ def before_request():
         db.session.commit()
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    user = {'username': 'Franklin'}
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, user=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
     posts = [
         {
             'author': {'username': 'John'},
@@ -34,7 +40,8 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template('index.html', title='Home', posts=posts)
+    return render_template('index.html', title='Home Page', form=form,
+                           posts=posts)
 
 
 @app.route('/login', methods=['GET', 'POST'])
