@@ -8,11 +8,15 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # Adding email server details to the configuration file
-    MAIL_SERVER = os.environ.get('MAIL_SERVER')
-    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    # MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = 1025
+    # MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['myemail@example.com']
     POSTS_PER_PAGE = 25
     LANGUAGES = ['en', 'es']
+    MAIL_SUPPRESS_SEND = False
+    MAIL_DEBUG = True
+    MAIL_SERVER = 'localhost'
+
