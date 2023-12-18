@@ -22,4 +22,5 @@ class Config(object):
     MAIL_SUPPRESS_SEND = False
     MAIL_DEBUG = True
     MAIL_SERVER = 'localhost'
+    ELASTICSEARCH_URL = 'http://localhost:9200'
 

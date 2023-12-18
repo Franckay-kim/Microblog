@@ -1,4 +1,4 @@
-2023-12-06 06:35:16,085 ERROR: Exception on / [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+2023-12-07 06:22:45,554 ERROR: Exception on /user/frankline [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,9 +15,9 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 47, in index
-    return render_template('index.html', title=_('Home Page'), form=form,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 66, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,9 +28,8 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap_wtf.html' as wtf %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,23 +44,15 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 48, in block 'content'
     {% block app_content %}{% endblock %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\index.html", line 11, in block 'app_content'
-    {% include '_post.html' %}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 13, in block 'app_content'
+    <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\_post.html", line 4, in top-level template code
-    <a href="{{ url_for('user', username=post.author.username) }}">
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1697, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1686, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\werkzeug\routing\map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'user' with values ['username']. Did you mean 'main.user' instead?
-2023-12-06 06:41:06,060 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-06 06:41:08,355 ERROR: Exception on / [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'sqlalchemy.orm.writeonly.WriteOnlyCollection object' has no attribute 'count'
+2023-12-07 06:27:34,430 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
+2023-12-07 06:27:46,434 ERROR: Exception on /user/frank [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -78,9 +69,9 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 47, in index
-    return render_template('index.html', title=_('Home'), form=form,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 66, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -91,9 +82,8 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap_wtf.html' as wtf %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,21 +95,11 @@ Traceback (most recent call last):
     {% block body -%}
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
     {% block content -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 48, in block 'content'
-    {% block app_content %}{% endblock %}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 13, in block 'content'
+    <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\index.html", line 11, in block 'app_content'
-    {% include '_post.html' %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\_post.html", line 4, in top-level template code
-    <a href="{{ url_for('user', username=post.author.username) }}">
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1697, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1686, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\werkzeug\routing\map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'user' with values ['username']. Did you mean 'main.user' instead?
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'sqlalchemy.orm.writeonly.WriteOnlyCollection object' has no attribute 'count'
+2023-12-07 06:37:21,215 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]

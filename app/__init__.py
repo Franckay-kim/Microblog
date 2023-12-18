@@ -10,6 +10,7 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _1
 from config import Config
 from flask_bootstrap import Bootstrap
+from elasticsearch import Elasticsearch
 
 
 # select best language
@@ -39,6 +40,8 @@ def create_app(config_class=Config):
     moment.init_app(app)
     babel.init_app(app)
     bootstrap.init_app(app)
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
 
     from .errors import bp as error_bp
     app.register_blueprint(error_bp)
