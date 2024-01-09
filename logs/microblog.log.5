@@ -1,4 +1,4 @@
-2023-12-13 06:45:03,432 ERROR: Exception on /user/frank [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+2023-12-18 07:00:32,971 ERROR: Exception on /search [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,44 +15,32 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 66, in user
-    return render_template('user.html', user=user, posts=posts.items, next_url=next_url,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 132, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
-    {% block content -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 48, in block 'content'
-    {% block app_content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 13, in block 'app_content'
-    <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'sqlalchemy.orm.writeonly.WriteOnlyCollection object' has no attribute 'count'
-2023-12-13 06:48:55,811 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-13 06:49:02,493 ERROR: Exception on /user/frank [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 156, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\models.py", line 18, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\search.py", line 22, in query_index
+    search = current_app.elasticsearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 402, in wrapped
+    return api(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3733, in search
+    return self.perform_request(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 285, in perform_request
+    meta, resp_body = self.transport.perform_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x0000023C07B62750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it))
+2023-12-18 07:02:24,783 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2023-12-18 07:02:48,472 ERROR: Exception on /search [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -69,50 +57,37 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 66, in user
-    return render_template('user.html', user=user, posts=posts.items, next_url=next_url,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 132, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
-    {% block content -%}
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 48, in block 'content'
-    {% block app_content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 15, in block 'app_content'
-    <p><a href="{{ url_for('edit_profile') }}">{{ _('Edit your profile') }}</a></p>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1697, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1686, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\werkzeug\routing\map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
-2023-12-13 06:52:46,218 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-14 06:16:43,344 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-14 09:33:08,708 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-15 07:16:39,292 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-15 21:06:48,975 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
-2023-12-16 00:04:45,003 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 156, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\models.py", line 18, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\search.py", line 22, in query_index
+    search = current_app.elasticsearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 402, in wrapped
+    return api(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3733, in search
+    return self.perform_request(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 285, in perform_request
+    meta, resp_body = self.transport.perform_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x000001BC07C80FD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it))
+2023-12-18 07:03:22,031 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2023-12-18 07:09:09,760 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2023-12-19 22:27:00,567 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-02 05:26:49,976 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-02 20:10:02,611 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-02 21:26:22,454 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-04 00:07:59,692 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-04 20:35:18,303 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-09 21:40:14,067 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+2024-01-09 22:05:47,997 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]

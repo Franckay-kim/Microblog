@@ -1,4 +1,65 @@
-2023-12-18 06:20:16,003 ERROR: Exception on /search [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+2024-01-09 22:49:31,241 ERROR: Exception on /auth/login [POST] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\pymysql\connections.py", line 644, in connect
+    sock = socket.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 836, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3292, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1269, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 169, in _do_get
+    with util.safe_reraise():
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 902, in __connect
+    with util.safe_reraise():
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 637, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\pymysql\connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] No connection could be made because the target machine actively refused it)")
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,74 +73,78 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 156, in search
-    posts, total = Post.search(g.search_form.q.data, page,
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\models.py", line 18, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\search.py", line 22, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 402, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3733, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 285, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_transport.py", line 328, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 202, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x00000268EF34CB90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it))
-2023-12-18 06:29:16,200 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
-2023-12-18 06:36:14,079 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
-2023-12-18 06:37:36,675 ERROR: Exception on /search [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
-Traceback (most recent call last):
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 156, in search
-    posts, total = Post.search(g.search_form.q.data, page,
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\models.py", line 18, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\search.py", line 22, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 402, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3733, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 285, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_transport.py", line 328, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 202, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x00000227BF4892D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it))
-2023-12-18 06:39:06,475 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:87]
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\auth\routes.py", line 22, in login
+    user = db.session.scalar(
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1859, in scalar
+    return self._proxied.scalar(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2358, in scalar
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2180, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2047, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1143, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3268, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2430, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3292, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1269, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 169, in _do_get
+    with util.safe_reraise():
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 902, in __connect
+    with util.safe_reraise():
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 637, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\pymysql\connections.py", line 711, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] No connection could be made because the target machine actively refused it)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
