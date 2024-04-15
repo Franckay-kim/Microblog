@@ -1,12 +1,4 @@
-2023-12-07 06:47:10,223 ERROR: Exception on /user/frankline [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
-Traceback (most recent call last):
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2505, in get_property
-    return self._props[key]
-           ~~~~~~~~~~~^^^^^
-KeyError: 'author'
-
-The above exception was the direct cause of the following exception:
-
+2023-12-07 06:50:04,513 ERROR: Exception on /user/frankline [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,113 +6,103 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1482, in full_dispatch_request
-    rv = self.preprocess_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1974, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 17, in before_request
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\werkzeug\local.py", line 316, in __get__
-    obj = instance._get_current_object()  # type: ignore[misc]
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\werkzeug\local.py", line 520, in _get_current_object
-    return get_name(local())  # type: ignore
-                    ^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\models.py", line 117, in load_user
-    return db.session.get(User, int(id))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1063, in get
-    return self._proxied.get(
-           ^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3651, in get
-    return self._get_impl(
-           ^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3831, in _get_impl
-    return db_load_fn(
-           ^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 690, in load_on_pk_identity
-    session.execute(
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2306, in execute
-    return self._execute_internal(
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2188, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 293, in orm_execute_statement
-    result = conn.execute(
-             ^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
-    return meth(
-           ^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1631, in _execute_clauseelement
-    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
-                                                ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 704, in _compile_w_cache
-    compiled_sql = self._compiler(
-                   ^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 316, in _compiler
-    return dialect.statement_compiler(dialect, self, **kw)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1426, in __init__
-    Compiled.__init__(self, dialect, statement, **kwargs)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 867, in __init__
-    self.string = self.process(self.statement, **compile_kwargs)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 912, in process
-    return obj._compiler_dispatch(self, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\visitors.py", line 143, in _compiler_dispatch
-    return meth(self, **kw)  # type: ignore  # noqa: E501
-           ^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4585, in visit_select
-    compile_state = select_stmt._compile_state_factory(
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\sql\base.py", line 687, in create_for_statement
-    return klass.create_for_statement(statement, compiler, **kw)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 1091, in create_for_statement
-    _QueryEntity.to_compile_state(
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2537, in to_compile_state
-    _MapperEntity(
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2617, in __init__
-    entity._post_inspect
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2707, in _post_inspect
-    self._check_configure()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2386, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4199, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4240, in _do_configure_registries
-    mapper._post_configure_properties()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2403, in _post_configure_properties
-    prop.init()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 579, in init
-    self.do_init()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1640, in do_init
-    self._generate_backref()
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2129, in _generate_backref
-    self._add_reverse_property(self.back_populates)
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1571, in _add_reverse_property
-    other = self.mapper.get_property(key, _configure_mappers=False)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2507, in get_property
-    raise sa_exc.InvalidRequestError(
-sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[User(user)]' has no property 'author'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
-2023-12-07 06:49:59,047 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 66, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 48, in block 'content'
+    {% block app_content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 13, in block 'app_content'
+    <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'count'
+2023-12-07 06:56:20,184 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
+2023-12-07 06:56:28,202 ERROR: Exception on /user/frankline [GET] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\main\routes.py", line 66, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\base.html", line 48, in block 'content'
+    {% block app_content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\templates\user.html", line 13, in block 'app_content'
+    <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'sqlalchemy.orm.writeonly.WriteOnlyCollection object' has no attribute 'count'
+2023-12-13 06:17:55,642 INFO: Microblog startup [in C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\__init__.py:84]
