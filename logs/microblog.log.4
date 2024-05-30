@@ -1,11 +1,11 @@
-2024-01-09 22:47:45,687 ERROR: Exception on /auth/reset_password_request [POST] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
+2024-05-06 20:59:36,439 ERROR: Exception on /auth/login [POST] [in C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\pymysql\connections.py", line 644, in connect
     sock = socket.create_connection(
            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 851, in create_connection
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 851, in create_connection
     raise exceptions[0]
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 836, in create_connection
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 836, in create_connection
     sock.connect(sa)
 ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
 
@@ -73,9 +73,9 @@ Traceback (most recent call last):
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\auth\routes.py", line 64, in reset_password_request
-    user = db.session.scalar(sa.select(User).where(User.email == form.email.data))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\Python Projects\pythonProject\Microblog\app\auth\routes.py", line 22, in login
+    user = db.session.scalar(
+           ^^^^^^^^^^^^^^^^^^
   File "C:\xampp\htdocs\Python Projects\pythonProject\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1859, in scalar
     return self._proxied.scalar(
            ^^^^^^^^^^^^^^^^^^^^^
